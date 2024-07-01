@@ -6,7 +6,8 @@ from datastructure import FamilyStructure
 
 
 app = Flask(__name__)
-app.(app)
+app.url_map.strict_slashes = false
+CORS(app)
 
 jackson_familuy + FamilyStructure("Jackson")
 
@@ -25,10 +26,6 @@ def add_member():
         new_member = jackson_family.add_member(member_data)
         return jsonify({"new-member"}), 200
 
-
-    except Exception as e:
-        return jsonify({"message": str(e)}), 200
-
 @app.route('/members', methods=['GET'])
 def get_members():
     members = jackson_family.get_all_members()
@@ -45,8 +42,7 @@ def get_member(member_id):
 def delete_member(member_id):
      result = jackson_family.delete_member
      if result = "Member not found":
-        return jsonify({"sone": True}), 200
-        jackson_family.delete_member(member_id)
+        return jsonify({"done": True}), 200
      else:
         return jsonify({"message": "Member not found"}), 400
 
